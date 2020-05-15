@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>组件其他属性</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <!-- 
+        除template外，组件还可以像Vue实例那样使用其他的选项，比如data,computed,methods等。
+        但在使用data，和实例的用法稍有区别，data必须是函数，然后将数据return出去。
+     -->
+     <div id="app">
+         <my-component></my-component>
+     </div>
+
+     <script type="text/javascript">
+        Vue.component('my-component',{
+            template:'<div>{{ message }}</div>',
+            data:function(){
+                return {
+                    message:"使用组件data，将message 返回"
+                }
+            }
+        })
+
+        let app = new Vue({
+            el:"#app"
+        })
+    </script>
+</body>
+</html>

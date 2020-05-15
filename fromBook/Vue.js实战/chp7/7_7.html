@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>props驼峰命名</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="app">
+        <my-component warning-text="由于HTML特性不区分大小写，当使用DOM模板时，驼峰命名（camelCase）的props名称要转为短横分隔命名（kebab-case）"></my-component>
+    </div>
+
+    <script type="text/javascript">
+        Vue.component('my-component',{
+            props:['warningText'],
+            template:"<div>{{ warningText }}</div>"  //attention
+        })
+
+        let app = new Vue({
+            el:"#app"
+        })
+    </script>
+
+    <!-- 如果是字符串模板，仍然可以忽略这些限制 -->
+</body>
+</html>

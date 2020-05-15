@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no" />
+    <title>[props]数据验证</title>
+     <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+       
+        <my-component :propA=""></my-component>
+    </div>
+
+
+    <script type="text/javascript">
+        Vue.component('my-component',{
+            props: {
+                // 基础的类型检查 (`null` 和 `undefined` 会通过任何类型验证)
+                propA:{
+                    type:Number,
+                    required:true
+                }
+                 
+             
+            },
+            template: "<div>{{ propA }}</div>",
+        })
+
+
+        let app = new Vue({
+            el:"#app",
+            data:{
+            propVal:""
+            }
+        });
+    </script>
+</body>
+
+</html>

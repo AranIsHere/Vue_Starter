@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>初识Vue组件</title>
+    <title>初识Vue组件-全局</title>
     <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
 </head>
 <body>
@@ -12,7 +12,9 @@
     </div>
 
     <script>
+        //全局注册Vue组件
         Vue.component('my-component',{
+            // template的DOM结构必须被一个元素包含，如果直接写成“这里是组件内容”，将无法渲染
             template:'<div>这里是组件的内容</div>'
         });
 

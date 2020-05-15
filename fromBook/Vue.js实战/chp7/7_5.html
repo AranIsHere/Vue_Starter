@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>组件-data内引用对象共享</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <div>组件内data引用外部data，数据将被共享：</div>
+    <div id="app">
+        <my-component></my-component>
+        <my-component></my-component>
+        <my-component></my-component>
+    </div>
+    <div>组件内data引用新的对象，数据不会被共享：</div>
+    <div id="app1">
+        <my-component1></my-component1>
+        <my-component1></my-component1>
+        <my-component1></my-component1>
+    </div>
+    <script type="text/javascript">
+        let data = {
+            counter:0
+        }
+
+        Vue.component('my-component',{
+            template:'<button @click="counter++">{{counter}}</button>',
+            data:function(){
+                return data;
+            }
+        });
+
+        Vue.component('my-component1',{
+            template:'<button @click="counter++">{{counter}}</button>',
+            data:function(){
+                return {
+                    counter:0
+                }
+            }
+        });
+        let app = new Vue({
+            el:"#app"
+        })
+        let app1 = new Vue({
+            el:"#app1"
+        })
+    </script>
+</body>
+</html>

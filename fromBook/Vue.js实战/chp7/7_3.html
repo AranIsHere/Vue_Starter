@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            Vue组件的模板在某些情况下会收到html的限制，比如<table>内必须是<tr> <td> <th>等表格元素，所以直接在
+            <table>内使用自定义组件无效，这种情况下，可以使用is属性来挂载组件    
+         -->
+        <table>
+            <tbody is="my-component"></tbody>
+        </table>
+
+
+    </div>
+
+    <script type="text/javascript">
+        Vue.component('my-component',{
+            template:'<div>这是用is属性挂载的组件内容</div>'
+        });
+
+        let app = new Vue({
+            el:"#app"
+        });
+    </script>
+    <!-- 
+        如果使用的是字符串模板，则不受限制，比如后面介绍的.vue单文件用法等
+     -->
+</body>
+</html>
