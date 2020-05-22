@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>[组件通信]-父链</title>
+    <script src="https://unpkg.com/vue/dist/vue.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+        <component-a></component-a>
+    </div>
+
+    <script type="text/javascript">
+        Vue.component('component-a',{
+            template:'<button @click="handleEvent">通过父组件直接修改数据</button>',
+            methods: {
+                handleEvent:function(){
+                    //访问到父链后，可以做任何操作，比如直接修改数据
+                    this.$parent.message = '来自组件component-a的内容';
+                }
+            },
+        });
+
+        let app = new Vue({
+            el:"#app",
+            data:{
+                message:""
+            }
+
+        })
+    </script>
+</body>
+</html>
