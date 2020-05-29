@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>[slot] - 作用域插槽-具名slot</title>
+    <script src="https://unpkg.com/vue/dist/vue.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="app">
+        <my-list :books="books">
+            <!-- 作用域插槽也可以是具名的Slot -->
+            <template slot="book" scope="props">
+                <li>
+                    {{props.bookName}}
+                </li>
+            </template>
+        </my-list>
+    </div>
+
+
+<script type="text/javascript">
+    Vue.component('my-list',{
+        props:{
+            books:{
+                type:Array,
+                default:function(){
+                    return [];
+                }
+            }
+        },
+        template:'\
+        <ul>\
+            <slot name="book"\
+            v-for="book in books"\
+            :book-name = "book.name">\
+                <!--这里也可以写默认slot内容-->\
+            </slot>\
+        </ul>'
+    });
+
+    let app = new Vue({
+        el:"#app",
+        data:{
+            books:[
+                {name:"《Vue.js实战》"},
+                {name:"《js实战》"},
+                {name:"《实战》"}
+            ]
+        }
+    });
+</script>
+</body>
+</html>

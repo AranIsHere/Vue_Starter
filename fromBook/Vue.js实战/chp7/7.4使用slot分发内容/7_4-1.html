@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>[slot]-单个slot</title>
+    <script src="https://unpkg.com/vue/dist/vue.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="app">
+        <child-component>
+            <p>分发内容</p>
+            <p>更多分发内容</p>
+        </child-component>
+    </div>
+    
+    <script type="text/javascript">
+        Vue.component('child-component',{
+            template:'\
+                    <div>\
+                        <slot>如果父组件没有插入内容，我将作为默认出现</slot>\
+                    </div>',
+                
+        });
+
+        let app = new Vue({
+            el:"#app"
+            })
+    </script>
+<!-- 
+提示：
+
+    - 子组件的<slot>内的备用内容，它的作用域是子组件本身
+
+ -->
+</body>
+</html>
+

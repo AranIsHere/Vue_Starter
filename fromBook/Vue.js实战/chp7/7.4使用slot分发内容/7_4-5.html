@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>[slot]-作用域插槽(访问slot)</title>
+    <script src="https://unpkg.com/vue/dist/vue.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="app">
+        <child-component>
+            <h2 slot="header">标题</h2>
+            <p>正文内容</p>
+            <p>更多正文内容</p>
+            <div slot="footer"></div>
+        </child-component>
+
+
+
+    </div>
+
+    <script type="text/javascript">
+        Vue.component('child-component',{
+            template:'\
+            <div class="container">\
+            <div class="header">\
+                <slot name="header"></slot>\
+            </div>\
+            <div class="main">\
+                <slot></slot>\
+            </div>\
+            <div class="footer">\
+                <slot name="footer"></slot>\
+            </div>\
+            </div>',
+            mounted() {
+                
+                let header = this.$slots.header;
+                let main = this.$slots.default;
+                let footer = this.$slots.footer;
+                console.log(footer);
+                console.log(footer[0].elm.innerHTML);
+            },
+        });
+
+        let app = new Vue({
+            el:"#app",
+        })
+
+    </script>
+</body>
+</html>

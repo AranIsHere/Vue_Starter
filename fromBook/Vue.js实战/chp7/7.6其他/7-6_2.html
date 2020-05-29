@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>$nextTick-使用方法</title>
+    <script src="https://unpkg.com/vue/dist/vue.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="app">
+       <div id="div" v-if="showDiv">这是一段文本</div> 
+       <button @click="getText">获取div的内容</button>
+    </div>
+
+    <script type="text/javascript">
+        let app = new Vue({
+            el:"#app",
+            data:{
+                showDiv:false
+            },
+            methods: {
+                getText(){
+                    this.showDiv = true;
+                    this.$nextTick(function(){
+                        var text = document.getElementById('div').innerHTML;
+                        console.log(text);
+                    })
+                }
+            },
+        });
+    </script>
+</body>
+</html>

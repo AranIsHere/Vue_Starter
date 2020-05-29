@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>组件高级用法-动态组件</title>
+    <script src="https://unpkg.com/vue/dist/vue.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 当前激活组件 -->
+        <component :is="curView"></component>
+        <button @click="handleChangeView('A')">A</button>
+        <button @click="handleChangeView('B')">B</button>
+        <button @click="handleChangeView('C')">C</button>
+    </div>
+
+    <script type="text/javascript">
+        let app  = new Vue({
+            el:"#app",
+            components:{
+                comA:{
+                    template:"<div>这是组件A</div>"
+                },
+                comB:{
+                    template:"<div>这是组件B</div>"
+                },
+                comC:{
+                    template:"<div>这是组件C</div>"
+                }
+            },
+            data:{
+                curView:'comA'
+            },
+            methods: {
+                
+                handleChangeView(comX){
+                    
+                    this.curView = "com"+comX
+                }
+            },
+        })
+    </script>
+</body>
+</html>

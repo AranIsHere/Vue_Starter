@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>组件的高级用法-异步组件</title>
+    <script src="https://unpkg.com/vue/dist/vue.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="app">
+        <child-component>
+
+        </child-component>
+    </div>
+
+    <script type="text/javascript">
+        Vue.component('child-component',function(resolve,reject){
+            window.setTimeout(function(){
+                resolve({
+                    template:"<div>我是异步渲染的</div>"
+                });
+            },2000);
+        });
+
+     let app = new Vue({
+         el:"#app"
+     });
+    </script>
+</body>
+</html>
