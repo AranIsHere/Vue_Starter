@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>render 中 使用js代替v-if v-else</title>
+    <script src="https://unpkg.com/vue/dist/vue.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="app">
+        <ele :show="show">
+
+        </ele>
+        <button @click="show =!show">切换 show</button>
+
+    </div>
+
+    <script type="text/javascript">
+        Vue.component('ele',{
+            render:function(createElement){
+                if(this.show){
+                    return createElement('p','show的值为true');
+                } else {
+                    return createElement('p','show的值false');
+                }
+            },
+            props:{
+                show:{
+                    type:Boolean,
+                    default:false
+                }
+            }
+        });
+
+        let app = new Vue({
+            el:"#app",
+            data:{
+                show:false
+            }
+        });
+    </script>
+</body>
+</html>

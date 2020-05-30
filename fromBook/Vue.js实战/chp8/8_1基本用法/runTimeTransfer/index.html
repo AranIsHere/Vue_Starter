@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义指令-实时时间转换执行v-time</title>
+    <script src="https://unpkg.com/vue/dist/vue.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <div v-time="timeNow"></div>
+        <div v-time="timeBefore"></div>
+    </div>
+
+    <script src="time.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

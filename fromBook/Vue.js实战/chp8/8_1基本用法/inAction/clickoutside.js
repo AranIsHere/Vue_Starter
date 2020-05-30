@@ -4,7 +4,7 @@ Vue.directive('clickoutside',{
             if(el.contains(e.target)){
                 return false;
             }
-            console.log(binding.expression);
+            
             if(binding.expression){
                 binding.value(e);
             }
@@ -19,3 +19,4 @@ Vue.directive('clickoutside',{
         delete el.__vueClickOutside__;
     }
 });
+

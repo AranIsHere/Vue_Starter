@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for</title>
+    <script src="https://unpkg.com/vue/dist/vue.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="app">
+        <ele :list="list"></ele>
+    </div>
+
+
+    <script type="text/javascript">
+         
+         Vue.component('ele',{
+             render:function(createElement){
+                let nodes = [];
+                for (let i = 0; i < nodes.length; i++) {
+                        nodes.push(createElement('p',this.list[i]));                    
+                }
+                return createElement('div',nodes);
+             },
+             props:{
+                 list:{
+                     type:Array
+                 }
+             }
+         });
+
+
+        let app = new Vue({
+            el:"#app",
+            data:{
+                list:[
+                    '《Vue.js实战》',
+                    '《JavaScript高级程序设计》',
+                    '《JavaScript 语言精粹》'
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
