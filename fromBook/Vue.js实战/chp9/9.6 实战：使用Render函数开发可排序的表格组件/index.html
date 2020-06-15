@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>可排序的表格</title>
+    <script src="https://unpkg.com/vue/dist/vue.js" type="text/javascript"></script> 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app" v-cloak>
+        <v-table :data='data' :columns="columns"> 
+
+        </v-table>
+
+        <button @click="handleAddData">添加数据</button>
+    </div>
+
+    <script src="table.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
